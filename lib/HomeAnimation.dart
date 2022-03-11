@@ -10,7 +10,7 @@ class HomeAnimation extends StatefulWidget {
 class _HomeAnimationState extends State<HomeAnimation>
     with TickerProviderStateMixin {
   late Animation<double> _animation1;
-  late AnimationController _controller1, _controller2;
+  late AnimationController _controller1, _controller2, _controller3;
 
   @override
   void initState() {
@@ -18,6 +18,8 @@ class _HomeAnimationState extends State<HomeAnimation>
     _controller1 = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 2200));
     _controller2 = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
+    _controller3 = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200));
     _animation1 = Tween(begin: 0.5, end: 1.0).animate(
         CurvedAnimation(parent: _controller2, curve: Curves.easeInOut));
@@ -100,6 +102,64 @@ class _HomeAnimationState extends State<HomeAnimation>
                         ),
                       ),
                     )
+                  ],
+                ),
+              )),
+          Positioned(
+              bottom: 590,
+              right: 40,
+              child: ScaleTransition(
+                scale: _controller2,
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(3),
+                          border: Border.all(width: 3, color: Colors.white)),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
+                        child: RotationTransition(
+                          turns: _controller1,
+                          child: const Icon(
+                            Icons.http,
+                            size: 30,
+                            color: Colors.amber,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                  ],
+                ),
+              )),
+          Positioned(
+              bottom: 590,
+              right: 40,
+              child: ScaleTransition(
+                scale: _controller2,
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(3),
+                          border: Border.all(width: 3, color: Colors.white)),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
+                        child: RotationTransition(
+                          turns: _controller2,
+                          child: const Icon(
+                            Icons.http,
+                            size: 30,
+                            color: Colors.amber,
+                          ),
+                        ),
+                      ),
+                    ),
+
                   ],
                 ),
               ))
